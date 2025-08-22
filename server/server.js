@@ -5,7 +5,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 
 const app = express();
-const PORT = 3000;
+const PORT = 5000;
 
 app.use(cors({
   origin: 'http://localhost:3000', // of je frontend URL
