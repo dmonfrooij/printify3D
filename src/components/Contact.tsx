@@ -34,7 +34,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-900">E-mail</h4>
-                  <p className="text-gray-600">info@print3dpro.nl</p>
+                <span>info@printify3d.nl</span>
                 </div>
               </div>
 

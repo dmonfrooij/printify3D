@@ -24,7 +24,7 @@ export default function Header({ isMenuOpen, setIsMenuOpen }: HeaderProps) {
               <Printer className="h-6 w-6 text-white" />
             </div>
             <div>
-              <h1 className="text-xl font-bold text-gray-900">Print3D Pro</h1>
+              <h1 className="text-xl font-bold text-gray-900">Printify3D</h1>
               <p className="text-xs text-gray-500 hidden sm:block">Design & Prototyping</p>
             </div>
           </div>

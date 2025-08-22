@@ -55,8 +55,8 @@ export default function Hero() {
           <div className="relative">
             <div className="relative w-full h-96 bg-gradient-to-br from-blue-100 to-cyan-100 rounded-2xl overflow-hidden">
               <img
-                src="https://images.pexels.com/photos/3862632/pexels-photo-3862632.jpeg"
-                alt="3D Printer in action"
+                src="https://images.pexels.com/photos/6963940/pexels-photo-6963940.jpeg"
+                alt="3D Printer nozzle close-up"
                 className="w-full h-full object-cover"
               />
               

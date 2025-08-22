@@ -13,7 +13,7 @@ export default function Footer() {
                 <Printer className="h-6 w-6 text-white" />
               </div>
               <div>
-                <h3 className="text-xl font-bold">Print3D Pro</h3>
+                <h3 className="text-xl font-bold">Printify3D</h3>
                 <p className="text-sm text-gray-400">Design & Prototyping</p>
               </div>
             </div>
@@ -82,7 +82,7 @@ export default function Footer() {
         <div className="border-t border-gray-800 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-sm text-gray-400 mb-4 md:mb-0">
-              © 2024 Print3D Pro. Alle rechten voorbehouden.
+              © 2024 Printify3D. Alle rechten voorbehouden.
             </div>
             <div className="flex space-x-6 text-sm text-gray-400">
               <a href="#privacy" className="hover:text-white transition-colors">Privacy</a>
