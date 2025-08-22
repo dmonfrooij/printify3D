@@ -15,7 +15,7 @@ export default function Hero() {
               </h1>
               <p className="text-lg sm:text-xl text-gray-600 leading-relaxed">
                 Professionele 3D printing services voor ontwerp en prototyping. 
-                Upload uw bestanden of deel uw ideeën - wij maken het werkelijkheid.
+                Upload uw bestanden  of deel uw ideeën - wij maken het werkelijkheid.
               </p>
             </div>
 
