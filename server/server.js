@@ -42,5 +42,5 @@ app.listen(PORT, () => {
 });
 
 app.post('/send-email', async (req, res) => {
-  console.log('Ontvangen verzoek:', req.body); //  logging
-  ...
+  console.log('Ontvangen verzoek:', req.body); // 👈 logging
+});
