@@ -1,4 +1,3 @@
-// server/server.js
 require('dotenv').config();
 const express = require('express');
 const nodemailer = require('nodemailer');
@@ -8,11 +7,14 @@ const bodyParser = require('body-parser');
 const app = express();
 const PORT = 3000;
 
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:3000', // of je frontend URL
+}));
 app.use(bodyParser.json());
 
 app.post('/send-email', async (req, res) => {
   const { name, email, subject, message } = req.body;
+  console.log('Ontvangen verzoek:', req.body); // ✅ logging toegevoegd
 
   try {
     const transporter = nodemailer.createTransport({
@@ -32,15 +34,11 @@ app.post('/send-email', async (req, res) => {
 
     res.status(200).json({ success: true, message: 'E-mail verzonden!' });
   } catch (error) {
-    console.error(error);
+    console.error('Fout bij verzenden:', error);
     res.status(500).json({ success: false, message: 'Fout bij verzenden.' });
   }
 });
 
 app.listen(PORT, () => {
   console.log(`Server draait op http://localhost:${PORT}`);
-});
-
-app.post('/send-email', async (req, res) => {
-  console.log('Ontvangen verzoek:', req.body); // 👈 logging
 });
