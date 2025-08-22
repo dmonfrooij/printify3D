@@ -40,3 +40,7 @@ app.post('/send-email', async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server draait op http://localhost:${PORT}`);
 });
+
+app.post('/send-email', async (req, res) => {
+  console.log('Ontvangen verzoek:', req.body); //  logging
+  ...
