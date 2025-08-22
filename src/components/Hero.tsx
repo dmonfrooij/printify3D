@@ -55,23 +55,15 @@ export default function Hero() {
           <div className="relative">
             <div className="relative w-full h-96 bg-gradient-to-br from-blue-100 to-cyan-100 rounded-2xl overflow-hidden">
               <img
-                src="https://images.pexels.com/photos/6963940/pexels-photo-6963940.jpeg"
-                alt="3D Printer nozzle close-up"
+                src="https://images.pexels.com/photos/3844788/pexels-photo-3844788.jpeg"
+                alt="3D printed objects and prototypes"
                 className="w-full h-full object-cover"
               />
               
-              {/* Floating cards */}
-              <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-lg p-3 shadow-lg">
-                <div className="text-sm font-semibold text-gray-900">Live printen</div>
-                <div className="text-xs text-gray-600">Prototype #247</div>
-                <div className="mt-2 h-2 bg-gray-200 rounded-full overflow-hidden">
-                  <div className="h-full bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full" style={{ width: '73%' }}></div>
-                </div>
-              </div>
-              
+              {/* Precision indicator */}
               <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm rounded-lg p-3 shadow-lg">
                 <div className="text-sm font-semibold text-gray-900">Precisie</div>
-                <div className="text-xs text-gray-600">0.1mm nauwkeurigheid</div>
+                <div className="text-xs text-gray-600">vanaf 0.2mm nauwkeurigheid</div>
               </div>
             </div>
           </div>

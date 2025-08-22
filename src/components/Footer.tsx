@@ -9,8 +9,15 @@ export default function Footer() {
           {/* Company Info */}
           <div className="col-span-1">
             <div className="flex items-center space-x-2 mb-6">
-              <div className="bg-gradient-to-r from-blue-600 to-cyan-500 p-2 rounded-lg">
-                <Printer className="h-6 w-6 text-white" />
+              <div className="bg-gradient-to-r from-blue-600 to-cyan-500 p-2 rounded-lg relative">
+                <div className="relative">
+                  {/* 3D Cube layers effect */}
+                  <div className="absolute inset-0 bg-white/20 rounded-sm transform translate-x-0.5 translate-y-0.5"></div>
+                  <div className="absolute inset-0 bg-white/10 rounded-sm transform translate-x-1 translate-y-1"></div>
+                  <div className="relative w-6 h-6 bg-white rounded-sm flex items-center justify-center">
+                    <div className="w-3 h-3 bg-gradient-to-br from-blue-600 to-cyan-500 rounded-sm"></div>
+                  </div>
+                </div>
               </div>
               <div>
                 <h3 className="text-xl font-bold">Printify3D</h3>
