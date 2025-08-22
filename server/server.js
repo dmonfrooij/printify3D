@@ -8,7 +8,7 @@ const app = express();
 const PORT = 5000;
 
 app.use(cors({
-  origin: 'http://localhost:3000', // of je frontend URL
+  origin: 'https://printify3d.nl:5000', // of je frontend URL
 }));
 app.use(bodyParser.json());
 
