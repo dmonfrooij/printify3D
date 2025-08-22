@@ -1,0 +1,202 @@
+import React from 'react';
+import { Mail, Phone, MapPin, Clock } from 'lucide-react';
+
+export default function Contact() {
+  return (
+    <section id="contact" className="py-20 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+            Contact
+          </h2>
+          <p className="text-lg text-gray-600">
+            Vragen over uw project? We helpen graag!
+          </p>
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
+          {/* Contact Information */}
+          <div className="space-y-8">
+            <div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">
+                Neem Contact Op
+              </h3>
+              <p className="text-gray-600 mb-8">
+                Heeft u vragen over uw 3D printing project? Of wilt u advies over materialen en ontwerp? 
+                We staan klaar om u te helpen met deskundig advies.
+              </p>
+            </div>
+
+            <div className="space-y-6">
+              <div className="flex items-center space-x-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-400 rounded-lg flex items-center justify-center">
+                  <Mail className="h-6 w-6 text-white" />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-gray-900">E-mail</h4>
+                  <p className="text-gray-600">info@print3dpro.nl</p>
+                </div>
+              </div>
+
+              <div className="flex items-center space-x-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-400 rounded-lg flex items-center justify-center">
+                  <Phone className="h-6 w-6 text-white" />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-gray-900">Telefoon</h4>
+                  <p className="text-gray-600">+31 (0)20 123 4567</p>
+                </div>
+              </div>
+
+              <div className="flex items-center space-x-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-400 rounded-lg flex items-center justify-center">
+                  <MapPin className="h-6 w-6 text-white" />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-gray-900">Adres</h4>
+                  <p className="text-gray-600">
+                    Innovation Street 123<br />
+                    1234 AB Amsterdam
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-center space-x-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-400 rounded-lg flex items-center justify-center">
+                  <Clock className="h-6 w-6 text-white" />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-gray-900">Openingstijden</h4>
+                  <p className="text-gray-600">
+                    Ma-Vr: 09:00 - 18:00<br />
+                    Za: 10:00 - 16:00
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Contact Form */}
+          <div className="bg-white rounded-2xl p-8 shadow-lg">
+            <h3 className="text-xl font-bold text-gray-900 mb-6">
+              Stuur een Bericht
+            </h3>
+            
+            <form className="space-y-6">
+              <div className="grid sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Naam *
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                    placeholder="Uw naam"
+                  />
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    E-mail *
+                  </label>
+                  <input
+                    type="email"
+                    required
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                    placeholder="uw@email.com"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Onderwerp
+                </label>
+                <select className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                  <option>Algemene vraag</option>
+                  <option>Offerte aanvraag</option>
+                  <option>Technische ondersteuning</option>
+                  <option>Materialenadvies</option>
+                  <option>Partnership</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Bericht *
+                </label>
+                <textarea
+                  required
+                  rows={5}
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+                  placeholder="Vertel ons over uw project of vraag..."
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold py-3 rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all duration-200 shadow-lg hover:shadow-xl"
+              >
+                Verstuur Bericht
+              </button>
+            </form>
+          </div>
+        </div>
+
+        {/* FAQ Section */}
+        <div className="mt-20">
+          <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">
+            Veelgestelde Vragen
+          </h3>
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="space-y-6">
+              <div>
+                <h4 className="font-semibold text-gray-900 mb-2">
+                  Welke bestandsformaten accepteren jullie?
+                </h4>
+                <p className="text-gray-600 text-sm">
+                  We accepteren STL, OBJ, STEP, CAD bestanden en nog veel meer. 
+                  Geen geschikt bestand? We helpen met de conversie!
+                </p>
+              </div>
+              
+              <div>
+                <h4 className="font-semibold text-gray-900 mb-2">
+                  Wat zijn de kosten?
+                </h4>
+                <p className="text-gray-600 text-sm">
+                  Kosten variëren per project. We berekenen op basis van materiaal, 
+                  printtijd en complexiteit. Offerte altijd gratis!
+                </p>
+              </div>
+            </div>
+            
+            <div className="space-y-6">
+              <div>
+                <h4 className="font-semibold text-gray-900 mb-2">
+                  Hoe snel kunnen jullie printen?
+                </h4>
+                <p className="text-gray-600 text-sm">
+                  Standaard 3-5 dagen, maar rush orders zijn mogelijk binnen 24-48 uur. 
+                  Timeline hangt af van complexiteit en grootte.
+                </p>
+              </div>
+              
+              <div>
+                <h4 className="font-semibold text-gray-900 mb-2">
+                  Bieden jullie ook design services?
+                </h4>
+                <p className="text-gray-600 text-sm">
+                  Ja! Van schets tot volledig CAD ontwerp. We helpen uw idee 
+                  om te zetten in een printbaar 3D model.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
