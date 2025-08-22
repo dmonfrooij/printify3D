@@ -44,7 +44,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-900">Telefoon</h4>
-                  <p className="text-gray-600">+31 (0)20 123 4567</p>
+                  <p className="text-gray-600">+31 (0) 6 154 030 80</p>
                 </div>
               </div>
 
