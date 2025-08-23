@@ -149,8 +149,8 @@ info@printify3d.nl
   }
 });
 
-// Catch-all voor niet-bestaande routes
-app.use('*', (req, res) => {
+// Catch-all voor niet-bestaande routes (Express 5 fix)
+app.use((req, res) => {
   console.log(`Route niet gevonden: ${req.method} ${req.originalUrl}`);
   res.status(404).json({
     success: false,
