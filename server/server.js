@@ -15,15 +15,15 @@ app.post('/send-email', async (req, res) => {
   console.log('Ontvangen verzoek:', req.body);
 
   try {
-  const transporter = nodemailer.createTransport({
-    host: "smtp.transip.email",  // <- correct
-    port: 465,
-    secure: true,
-    auth: {
-      user: process.env.TRANSIP_USER,
-      pass: process.env.TRANSIP_PASS,
-    },
-  });
+    const transporter = nodemailer.createTransport({
+      host: "smtp.transip.email",   // ✅ correct
+      port: 465,
+      secure: true,
+      auth: {
+        user: process.env.TRANSIP_USER,
+        pass: process.env.TRANSIP_PASS,
+      },
+    });
 
     await transporter.sendMail({
       from: process.env.TRANSIP_USER,
@@ -40,7 +40,6 @@ app.post('/send-email', async (req, res) => {
   }
 });
 
-// Zorg dat hij luistert op alle IP’s
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server draait op http://0.0.0.0:${PORT}`);
 });
