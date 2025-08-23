@@ -15,7 +15,7 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Versturen naar:', `${import.meta.env.VITE_BACKEND_URL}/send-email`);
+    console.log('Versturen naar:', `https://printify3d.nl/send-email`);
     console.log('Form data:', formData);
     
     try {
