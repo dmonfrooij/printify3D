@@ -16,7 +16,7 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/send-email`, {
+      const res = await fetch(`https://printify3d.nl/send-email`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
@@ -112,7 +112,7 @@ export default function Contact() {
 
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Naam2 *</label>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Naam *</label>
                 <input
                   type="text"
                   name="name"
