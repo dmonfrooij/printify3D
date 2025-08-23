@@ -15,13 +15,25 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    console.log('Versturen naar:', `${import.meta.env.VITE_BACKEND_URL}/send-email`);
+    console.log('Form data:', formData);
+    
     try {
-      const res = await fetch(`https://printify3d.nl/send-email`, {
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/send-email`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
         body: JSON.stringify(formData),
       });
+      
+      console.log('Response status:', res.status);
+      console.log('Response headers:', res.headers);
+      
       const data = await res.json();
+      console.log('Response data:', data);
+      
       if (data.success) {
         alert('Bericht verzonden! We nemen spoedig contact met u op.');
         setFormData({
@@ -34,6 +46,7 @@ export default function Contact() {
         alert('Er ging iets mis bij het verzenden. Probeer het opnieuw.');
       }
     } catch (err) {
+      console.error('Fetch error:', err);
       alert('Er ging iets mis bij het verzenden. Probeer het opnieuw of neem direct contact op via info@printify3d.nl');
     }
   };

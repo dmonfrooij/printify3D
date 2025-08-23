@@ -7,13 +7,23 @@ const bodyParser = require('body-parser');
 const app = express();
 const PORT = 5000;
 
+// Middleware moet VOOR de routes komen
 app.use(cors({
   origin: ['http://localhost:5173', 'http://localhost:4173', 'https://printify3d.nl'], // frontend URLs
 }));
 app.use(bodyParser.json());
+app.use(express.json()); // Extra JSON parser
+app.use(express.urlencoded({ extended: true })); // Voor form data
+
+// Health check endpoint
+app.get('/', (req, res) => {
+  res.json({ message: 'Printify3D API is running', status: 'OK' });
+});
 
 // Contact form endpoint
 app.post('/send-email', async (req, res) => {
+  console.log('POST /send-email ontvangen');
+  console.log('Headers:', req.headers);
   const { name, email, subject, message } = req.body;
   console.log('Ontvangen verzoek:', req.body);
 
@@ -45,6 +55,8 @@ app.post('/send-email', async (req, res) => {
 
 // File upload/project submission endpoint
 app.post('/submit-project', async (req, res) => {
+  console.log('POST /submit-project ontvangen');
+  console.log('Headers:', req.headers);
   const { 
     name, 
     email, 
@@ -146,6 +158,19 @@ info@printify3d.nl
   }
 });
 
+// Catch-all voor niet-bestaande routes
+app.use('*', (req, res) => {
+  console.log(`Route niet gevonden: ${req.method} ${req.originalUrl}`);
+  res.status(404).json({ 
+    success: false, 
+    message: `Route ${req.method} ${req.originalUrl} niet gevonden` 
+  });
+});
+
 app.listen(PORT, () => {
   console.log(`Server draait op http://localhost:${PORT}`);
+  console.log('Beschikbare routes:');
+  console.log('- GET  /');
+  console.log('- POST /send-email');
+  console.log('- POST /submit-project');
 });

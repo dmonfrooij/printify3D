@@ -61,13 +61,20 @@ export default function FileUpload() {
     };
 
     // Send to backend
+    console.log('Versturen naar:', `${import.meta.env.VITE_BACKEND_URL}/submit-project`);
+    console.log('Project data:', projectData);
+    
     fetch(`${import.meta.env.VITE_BACKEND_URL}/submit-project`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
       body: JSON.stringify(projectData),
     })
     .then(res => res.json())
     .then(data => {
+      console.log('Response data:', data);
       if (data.success) {
         setIsSubmitted(true);
         
@@ -91,7 +98,7 @@ export default function FileUpload() {
       }
     })
     .catch(err => {
-      console.error('Error:', err);
+      console.error('Fetch error:', err);
       alert('Er ging iets mis bij het verzenden. Probeer het opnieuw of neem direct contact op via info@printify3d.nl');
     });
   };
