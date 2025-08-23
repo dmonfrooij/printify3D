@@ -7,9 +7,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const PORT = 5000;
 
-app.use(cors({
-  origin: 'http://85.9.219.223:5000', // vervang dit door je frontend URL
-}));
+app.use(cors());
 app.use(bodyParser.json());
 
 app.post('/send-email', async (req, res) => {
@@ -19,18 +17,18 @@ app.post('/send-email', async (req, res) => {
   try {
     const transporter = nodemailer.createTransport({
       host: "mail.transip.email",
-      port: 465, // of 587 als je STARTTLS wil
-      secure: true, // true bij poort 465, false bij 587
+      port: 465,
+      secure: true,
       auth: {
-        user: process.env.TRANSIP_USER, // bv. info@jouwdomein.nl
-        pass: process.env.TRANSIP_PASS, // je mailbox wachtwoord
+        user: process.env.TRANSIP_USER,
+        pass: process.env.TRANSIP_PASS,
       },
     });
 
     await transporter.sendMail({
-      from: process.env.TRANSIP_USER, // je eigen mailbox bij TransIP
-      replyTo: email, // zodat je de afzender kan beantwoorden
-      to: process.env.EMAIL_RECEIVER, // je ontvangstadres
+      from: process.env.TRANSIP_USER,
+      replyTo: email,
+      to: process.env.EMAIL_RECEIVER,
       subject: `Nieuw bericht: ${subject}`,
       text: `Naam: ${name}\nE-mail: ${email}\n\nBericht:\n${message}`,
     });
@@ -42,6 +40,7 @@ app.post('/send-email', async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Server  draait op http://localhost:${PORT}`);
+// Zorg dat hij luistert op alle IP’s
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server draait op http://0.0.0.0:${PORT}`);
 });
