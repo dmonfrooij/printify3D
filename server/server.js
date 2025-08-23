@@ -2,18 +2,33 @@ require('dotenv').config();
 const express = require('express');
 const nodemailer = require('nodemailer');
 const cors = require('cors');
-const bodyParser = require('body-parser');
 
 const app = express();
 const PORT = 5000;
 
-// Middleware moet VOOR de routes komen
+// Middleware (moet altijd vóór de routes komen)
 app.use(cors({
-  origin: ['http://localhost:5173', 'http://localhost:4173', 'https://printify3d.nl'], // frontend URLs
+  origin: [
+    'http://localhost:5173',
+    'http://localhost:4173',
+    'https://printify3d.nl'
+  ],
 }));
-app.use(bodyParser.json());
-app.use(express.json()); // Extra JSON parser
-app.use(express.urlencoded({ extended: true })); // Voor form data
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Helper: mail transporter
+function createTransporter() {
+  return nodemailer.createTransport({
+    host: "mail.transip.email",
+    port: 465, // gebruik 587 bij STARTTLS
+    secure: true, // true bij poort 465, false bij 587
+    auth: {
+      user: process.env.TRANSIP_USER,
+      pass: process.env.TRANSIP_PASS,
+    },
+  });
+}
 
 // Health check endpoint
 app.get('/', (req, res) => {
@@ -23,66 +38,40 @@ app.get('/', (req, res) => {
 // Contact form endpoint
 app.post('/send-email', async (req, res) => {
   console.log('POST /send-email ontvangen');
-  console.log('Headers:', req.headers);
   const { name, email, subject, message } = req.body;
-  console.log('Ontvangen verzoek:', req.body);
+  console.log('Body:', req.body);
 
   try {
-    const transporter = nodemailer.createTransporter({
-      host: "mail.transip.email",
-      port: 465, // of 587 als je STARTTLS wil
-      secure: true, // true bij poort 465, false bij 587
-      auth: {
-        user: process.env.TRANSIP_USER, // bv. info@jouwdomein.nl
-        pass: process.env.TRANSIP_PASS, // je mailbox wachtwoord
-      },
-    });
+    const transporter = createTransporter();
 
     await transporter.sendMail({
-      from: 'info@printify3d.nl', // verzendadres
-      replyTo: email, // zodat je de afzender kan beantwoorden
-      to: 'info@printify3d.nl', // ontvangstadres
+      from: 'info@printify3d.nl',
+      replyTo: email,
+      to: 'info@printify3d.nl',
       subject: `Nieuw bericht: ${subject}`,
       text: `Naam: ${name}\nE-mail: ${email}\n\nBericht:\n${message}`,
     });
 
     res.status(200).json({ success: true, message: 'E-mail verzonden!' });
   } catch (error) {
-    console.error('Fout bij verzenden:', error);
-    res.status(500).json({ success: false, message: 'Fout bij verzenden.' });
+    console.error('Fout bij verzenden e-mail:', error);
+    res.status(500).json({ success: false, message: 'Fout bij verzenden e-mail.' });
   }
 });
 
-// File upload/project submission endpoint
+// Project submission endpoint
 app.post('/submit-project', async (req, res) => {
   console.log('POST /submit-project ontvangen');
-  console.log('Headers:', req.headers);
-  const { 
-    name, 
-    email, 
-    projectType, 
-    material, 
-    quantity, 
-    description, 
-    budget, 
-    timeline,
-    files 
+  const {
+    name, email, projectType, material, quantity,
+    description, budget, timeline, files
   } = req.body;
-  
-  console.log('Ontvangen project:', req.body);
+  console.log('Body:', req.body);
 
   try {
-    const transporter = nodemailer.createTransporter({
-      host: "mail.transip.email",
-      port: 465,
-      secure: true,
-      auth: {
-        user: process.env.TRANSIP_USER,
-        pass: process.env.TRANSIP_PASS,
-      },
-    });
+    const transporter = createTransporter();
 
-    // Email content
+    // Email naar Printify3D
     const emailContent = `
 NIEUW 3D PRINTING PROJECT
 ========================
@@ -102,7 +91,9 @@ BESCHRIJVING:
 ${description}
 
 BESTANDEN:
-${files && files.length > 0 ? files.map(f => `- ${f.name} (${f.size})`).join('\n') : 'Geen bestanden geüpload'}
+${files && files.length > 0
+  ? files.map(f => `- ${f.name} (${f.size})`).join('\n')
+  : 'Geen bestanden geüpload'}
 
 ---
 Dit bericht is automatisch gegenereerd via de Printify3D website.
@@ -116,11 +107,11 @@ Dit bericht is automatisch gegenereerd via de Printify3D website.
       text: emailContent,
     });
 
-    // Send confirmation email to customer
+    // Bevestiging naar klant
     const confirmationContent = `
 Beste ${name},
 
-Bedankt voor uw project aanvraag bij Printify3D!
+Bedankt voor uw projectaanvraag bij Printify3D!
 
 We hebben uw aanvraag ontvangen en zullen binnen 2 uur contact met u opnemen met een offerte.
 
@@ -130,7 +121,7 @@ VOORBEELD VAN UW AANVRAAG:
 - Aantal: ${quantity}
 - Timeline: ${timeline}
 
-Heeft u nog vragen? Neem gerust contact met ons op via info@printify3d.nl of +31 (0) 6 154 030 80.
+Heeft u nog vragen? Neem gerust contact met ons op via info@printify3d.nl of +31 (0)6 154 030 80.
 
 Met vriendelijke groet,
 Het Printify3D team
@@ -147,8 +138,8 @@ info@printify3d.nl
       text: confirmationContent,
     });
 
-    res.status(200).json({ 
-      success: true, 
+    res.status(200).json({
+      success: true,
       message: 'Project verzonden! U ontvangt binnen 2 uur een offerte.',
       referenceNumber: `PR${Math.random().toString(36).substr(2, 6).toUpperCase()}`
     });
@@ -161,14 +152,14 @@ info@printify3d.nl
 // Catch-all voor niet-bestaande routes
 app.use('*', (req, res) => {
   console.log(`Route niet gevonden: ${req.method} ${req.originalUrl}`);
-  res.status(404).json({ 
-    success: false, 
-    message: `Route ${req.method} ${req.originalUrl} niet gevonden` 
+  res.status(404).json({
+    success: false,
+    message: `Route ${req.method} ${req.originalUrl} niet gevonden`
   });
 });
 
 app.listen(PORT, () => {
-  console.log(`Server draait op http://localhost:${PORT}`);
+  console.log(`✅ Server draait op http://localhost:${PORT}`);
   console.log('Beschikbare routes:');
   console.log('- GET  /');
   console.log('- POST /send-email');
