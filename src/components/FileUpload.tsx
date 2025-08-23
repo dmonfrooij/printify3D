@@ -61,7 +61,7 @@ export default function FileUpload() {
     };
 
     // Send to backend
-    fetch('http://localhost:5000/submit-project', {
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/submit-project`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(projectData),
