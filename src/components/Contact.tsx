@@ -108,7 +108,7 @@ export default function Contact() {
 
           {/* Contact Form */}
           <form onSubmit={handleSubmit} className="bg-white rounded-2xl shadow-xl p-8 space-y-8">
-            <h3 className="text-xl font-bold text-gray-900 mb-6">Stuur een Bericht</h3>
+            <h3 className="text-xl font-bold text-gray-900 mb-6">Stuur een bericht</h3>
 
             <div className="grid md:grid-cols-2 gap-6">
               <div>
