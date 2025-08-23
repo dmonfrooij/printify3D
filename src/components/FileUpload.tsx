@@ -47,26 +47,53 @@ export default function FileUpload() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically send the data to your backend
-    console.log('Project details:', projectDetails);
-    console.log('Files:', files);
-    setIsSubmitted(true);
     
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFiles([]);
-      setProjectDetails({
-        name: '',
-        email: '',
-        projectType: 'prototype',
-        material: 'PLA',
-        quantity: '1',
-        description: '',
-        budget: '',
-        timeline: 'standard'
-      });
-    }, 3000);
+    // Prepare file information for email (since we can't actually upload files via email)
+    const fileInfo = files.map(file => ({
+      name: file.name,
+      size: formatFileSize(file.size),
+      type: file.type
+    }));
+
+    const projectData = {
+      ...projectDetails,
+      files: fileInfo
+    };
+
+    // Send to backend
+    fetch('http://localhost:5000/submit-project', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(projectData),
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (data.success) {
+        setIsSubmitted(true);
+        
+        // Reset form after 5 seconds
+        setTimeout(() => {
+          setIsSubmitted(false);
+          setFiles([]);
+          setProjectDetails({
+            name: '',
+            email: '',
+            projectType: 'prototype',
+            material: 'PLA',
+            quantity: '1',
+            description: '',
+            budget: '',
+            timeline: 'standard'
+          });
+        }, 5000);
+      } else {
+        alert('Er ging iets mis bij het verzenden. Probeer het opnieuw.');
+      }
+    })
+    .catch(err => {
+      console.error('Error:', err);
+      alert('Er ging iets mis bij het verzenden. Probeer het opnieuw of neem direct contact op via info@printify3d.nl');
+    });
   };
 
   const formatFileSize = (bytes: number) => {

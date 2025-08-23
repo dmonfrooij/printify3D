@@ -55,8 +55,8 @@ export default function Hero() {
           <div className="relative">
             <div className="relative w-full h-96 bg-gradient-to-br from-blue-100 to-cyan-100 rounded-2xl overflow-hidden">
               <img
-                src="https://images.pexels.com/photos/3844788/pexels-photo-3844788.jpeg"
-                alt="3D printed objects and prototypes"
+                src="https://images.pexels.com/photos/3862132/pexels-photo-3862132.jpeg"
+                alt="3D printer creating prototypes and design objects"
                 className="w-full h-full object-cover"
               />
               
@@ -64,6 +64,12 @@ export default function Hero() {
               <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm rounded-lg p-3 shadow-lg">
                 <div className="text-sm font-semibold text-gray-900">Precisie</div>
                 <div className="text-xs text-gray-600">vanaf 0.2mm nauwkeurigheid</div>
+              </div>
+              
+              {/* Material indicator */}
+              <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-lg p-3 shadow-lg">
+                <div className="text-sm font-semibold text-gray-900">Materialen</div>
+                <div className="text-xs text-gray-600">PLA • ABS • PETG • TPU</div>
               </div>
             </div>
           </div>

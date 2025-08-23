@@ -16,15 +16,25 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const res = await fetch('https://85.9.219.223:5000/send-email', {
+      const res = await fetch('http://localhost:5000/send-email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
       const data = await res.json();
-      alert(data.message);
+      if (data.success) {
+        alert('Bericht verzonden! We nemen spoedig contact met u op.');
+        setFormData({
+          name: '',
+          email: '',
+          subject: 'Algemene vraag',
+          message: '',
+        });
+      } else {
+        alert('Er ging iets mis bij het verzenden. Probeer het opnieuw.');
+      }
     } catch (err) {
-      alert('Er ging iets mis bij het verzenden.');
+      alert('Er ging iets mis bij het verzenden. Probeer het opnieuw of neem direct contact op via info@printify3d.nl');
     }
   };
 
