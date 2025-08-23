@@ -16,11 +16,11 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-   const res = await fetch('/send-email', {
-     method: 'POST',
-     headers: { 'Content-Type': 'application/json' },
-     body: JSON.stringify(formData),
-   });
+      const res = await fetch('https://85.9.219.223:5000/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
       const data = await res.json();
       alert(data.message);
     } catch (err) {
@@ -75,8 +75,8 @@ export default function Contact() {
                 <div>
                   <h4 className="font-semibold text-gray-900">Adres</h4>
                   <p className="text-gray-600">
-                    Borculoseweg 125<br />
-                    7161 GV Neede
+                    Innovation Street 123<br />
+                    1234 AB Amsterdam
                   </p>
                 </div>
               </div>
@@ -88,8 +88,8 @@ export default function Contact() {
                 <div>
                   <h4 className="font-semibold text-gray-900">Openingstijden</h4>
                   <p className="text-gray-600">
-                    Ma-Vr: 09:00 - 20:00<br />
-                    Za: 10:00 - 15:00
+                    Ma-Vr: 09:00 - 18:00<br />
+                    Za: 10:00 - 16:00
                   </p>
                 </div>
               </div>
