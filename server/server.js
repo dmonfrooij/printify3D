@@ -37,8 +37,8 @@ app.get('/', (req, res) => {
 });
 
 // Contact form endpoint
-app.post('/send-email', async (req, res) => {
-  console.log('POST /send-email ontvangen');
+app.post(['/send-email', '/api/send-email'], async (req, res) => {
+  console.log(`POST ${req.originalUrl} ontvangen`);
   const { name, email, subject, message } = req.body;
   console.log('Body:', req.body);
 
@@ -61,8 +61,8 @@ app.post('/send-email', async (req, res) => {
 });
 
 // Project submission endpoint
-app.post('/submit-project', async (req, res) => {
-  console.log('POST /submit-project ontvangen');
+app.post(['/submit-project', '/api/submit-project'], async (req, res) => {
+  console.log(`POST ${req.originalUrl} ontvangen`);
   const {
     name, email, projectType, material, quantity,
     description, budget, timeline, files
