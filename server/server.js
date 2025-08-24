@@ -10,6 +10,7 @@ const PORT = 5000;
 app.use(cors({
   origin: [
     'http://localhost:5173',
+    'https://localhost:5173',
     'http://localhost:4173',
     'https://printify3d.nl'
   ],
