@@ -19,7 +19,7 @@ export default function Contact() {
     console.log('Form data:', formData);
     
     try {
-      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/send-email`, {
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}:5000/send-email`, {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',
