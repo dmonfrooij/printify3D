@@ -15,11 +15,11 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Versturen naar :', `https://printify3d.nl:5000/send-email`);
+    console.log('Versturen naar :', `https://printify3d.nl/send-email`);
     console.log('Form data:', formData);
     
     try {
-      const res = await fetch(`https://printify3d.nl:5000/send-email`, {
+      const res = await fetch(`https://printify3d.nl/send-email`, {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',
