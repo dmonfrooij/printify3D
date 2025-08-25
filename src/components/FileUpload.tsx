@@ -61,17 +61,20 @@ export default function FileUpload() {
     };
 
     // Send to backend
-    console.log('Versturen naar:', `${import.meta.env.VITE_BACKEND_URL}/submit-project`);
+    console.log('Versturen naar:', `/api/submit-project`);
     console.log('Project data:', projectData);
 
-    fetch(`/api/submit-project`, {
-      method: 'POST',
-      headers: { 
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify(projectData),
-    })
+
+    try {
+      const res = await fetch(`/api/submit-project`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(formData),
+      });
+
     .then(res => res.json())
     .then(data => {
       console.log('Response data:', data);
