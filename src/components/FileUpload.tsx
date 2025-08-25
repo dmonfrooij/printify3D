@@ -64,26 +64,14 @@ export default function FileUpload() {
     console.log('Versturen naar:', `/api/submit-project`);
     console.log('Project data:', projectData);
 
-
-try {
-  const res = await fetch('/api/submit-project', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json'
-    },
-    body: JSON.stringify(projectData),
-  });
-
-  const data = await res.json();
-  console.log('Response data:', data);
-  if (data.success) {
-    setIsSubmitted(true);
-  }
-} catch (error) {
-  console.error('Fout bij versturen:', error);
-}
-
+    fetch(`/api/submit-project`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(projectData),
+    })
     .then(res => res.json())
     .then(data => {
       console.log('Response data:', data);
