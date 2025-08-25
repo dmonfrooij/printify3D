@@ -63,8 +63,8 @@ export default function FileUpload() {
     // Send to backend
     console.log('Versturen naar:', `${import.meta.env.VITE_BACKEND_URL}/submit-project`);
     console.log('Project data:', projectData);
-    
-    fetch(`${import.meta.env.VITE_BACKEND_URL}/submit-project`, {
+
+    fetch(`/api/submit-project`, {
       method: 'POST',
       headers: { 
         'Content-Type': 'application/json',
