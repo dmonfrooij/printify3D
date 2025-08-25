@@ -21,7 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 // Helper: mail transporter
 function createTransporter() {
   return nodemailer.createTransport({
-    host: "mail.transip.email",
+    host: "smtp.transip.email",
     port: 465, // gebruik 587 bij STARTTLS
     secure: true, // true bij poort 465, false bij 587
     auth: {
