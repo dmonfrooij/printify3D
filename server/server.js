@@ -109,6 +109,10 @@ Dit bericht is automatisch gegenereerd via de Printify3D website.
       to: 'd.monfrooij@gmail.com',
       subject: `Nieuw 3D Printing Project - ${name}`,
       text: emailContent,
+      attachments: files && files.length > 0 ? files.map(f => ({
+        filename: f.name,
+        content: Buffer.from(f.data, 'base64')
+      })) : []
     });
 
     // Bevestiging naar klant
