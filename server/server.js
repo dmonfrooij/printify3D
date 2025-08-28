@@ -52,12 +52,7 @@ app.post(['/send-email', '/api/send-email'], async (req, res) => {
       to: 'd.monfrooij@gmail.com',
       subject: `Nieuw bericht: ${subject}`,
       text: `Naam: ${name}\nE-mail: ${email}\n\nBericht:\n${message}`,
-
-attachments: files && files.length > 0 ? files.map(f => ({
-  filename: f.name,
-  content: Buffer.from(f.data, 'base64')
-})) : [],
-});
+    });
 
     res.status(200).json({ success: true, message: 'E-mail verzonden!' });
   } catch (error) {
