@@ -13,27 +13,100 @@ export default function Contact() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+
+const [files, setFiles] = useState<File[]>([]);
+
+const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  if (e.target.files) {
+    setFiles(Array.from(e.target.files));
+  }
+};
+
+
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  console.log('Versturen naar :', `https://printify3d.nl/api/submit-project`);
+  console.log('Form data:', formData);
+
+  try {
+
+const fileData = await Promise.all(
+  files.map(file => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        const base64 = reader.result?.toString().split(',')[1] || '';
+        resolve({
+          name: file.name,
+          size: file.size,
+          data: base64
+        });
+      };
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  })
+);
+
+
+    const payload = {
+      ...formData,
+      files: fileData
+    };
+
+    const res = await fetch(`https://printify3d.nl/api/submit-project`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(payload),
+    });
+
+    console.log('Response status:', res.status);
+    console.log('Response headers:', res.headers);
+
+    const data = await res.json();
+    console.log('Response data:', data);
+
+    if (data.success) {
+      alert('Project verzonden! U ontvangt binnen 2 uur een offerte.');
+      setFormData({
+        name: '',
+        email: '',
+        subject: 'Algemene vraag',
+        message: '',
+      });
+      setFiles([]);
+    } else {
+      alert('Er ging iets mis bij het verzenden. Probeer het opnieuw.');
+    }
+  } catch (err) {
+    console.error('Fetch error:', err);
+    alert('Er ging iets mis bij het verzenden. Probeer het opnieuw of neem direct contact op via info@printify3d.nl');
+  }
+};
+
     e.preventDefault();
     console.log('Versturen naar :', `https://printify3d.nl/api/send-email`);
     console.log('Form data:', formData);
-    
+
     try {
       const res = await fetch(`https://printify3d.nl/api/send-email`, {
         method: 'POST',
-        headers: { 
+        headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json'
         },
         body: JSON.stringify(formData),
       });
-      
+
       console.log('Response status:', res.status);
       console.log('Response headers:', res.headers);
-      
+
       const data = await res.json();
       console.log('Response data:', data);
-      
+
       if (data.success) {
         alert('Bericht verzonden! We nemen spoedig contact met u op.');
         setFormData({
@@ -180,7 +253,19 @@ export default function Contact() {
               />
             </div>
 
-            <button
+
+<div>
+  <label className="block text-sm font-medium text-gray-700 mb-2">Bestanden toevoegen</label>
+  <input
+    type="file"
+    multiple
+    onChange={handleFileChange}
+    className="w-full px-4 py-3 rounded-lg border border-gray-300"
+  />
+</div>
+
+
+<button
               type="submit"
               className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold py-3 rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all duration-200 shadow-lg hover:shadow-xl"
             >
