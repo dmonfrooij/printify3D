@@ -57,6 +57,7 @@ app.post(['/send-email', '/api/send-email'], async (req, res) => {
     res.status(200).json({ success: true, message: 'E-mail verzonden!' });
   } catch (error) {
     console.error('Fout bij verzenden e-mail:', error);
+    console.error('Stacktrace:', error.stack);
     res.status(500).json({ success: false, message: 'Fout bij verzenden e-mail.' });
   }
 });
@@ -147,6 +148,7 @@ info@printify3d.nl
     });
   } catch (error) {
     console.error('Fout bij verzenden project:', error);
+    console.error('Stacktrace:', error.stack);
     res.status(500).json({ success: false, message: 'Fout bij verzenden project.' });
   }
 });
