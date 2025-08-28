@@ -160,7 +160,7 @@ app.use((req, res) => {
   });
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`✅ Server draait op http://localhost:${PORT}`);
   console.log('Beschikbare routes:');
   console.log('- GET  /');
