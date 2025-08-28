@@ -104,7 +104,7 @@ Dit bericht is automatisch gegenereerd via de Printify3D website.
     await transporter.sendMail({
       from: 'info@printify3d.nl',
       replyTo: email,
-      to: 'info@printify3d.nl',
+      to: 'd.monfrooij@gmail.com',
       subject: `Nieuw 3D Printing Project - ${name}`,
       text: emailContent,
     });
