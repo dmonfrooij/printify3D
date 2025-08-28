@@ -49,7 +49,7 @@ app.post(['/send-email', '/api/send-email'], async (req, res) => {
     await transporter.sendMail({
       from: 'info@printify3d.nl',
       replyTo: email,
-      to: 'info@printify3d.nl',
+      to: 'd.monfrooij@gmail.com',
       subject: `Nieuw bericht: ${subject}`,
       text: `Naam: ${name}\nE-mail: ${email}\n\nBericht:\n${message}`,
     });
