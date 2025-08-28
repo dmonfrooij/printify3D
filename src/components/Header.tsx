@@ -10,6 +10,7 @@ export default function Header({ isMenuOpen, setIsMenuOpen }: HeaderProps) {
   const navItems = [
     { label: 'Home', href: '#home' },
     { label: 'Services', href: '#services' },
+    { label: 'Voorbeelden', href: '#examples' },
     { label: 'Upload', href: '#upload' },
     { label: 'Contact', href: '#contact' }
   ];

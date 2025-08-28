@@ -87,7 +87,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-900">Telefoon</h4>
-                  <p className="text-gray-600">+31 (0) 6 154 030 80</p>
+                  <p className="text-gray-600">06 154 030 80</p>
                 </div>
               </div>
 
@@ -98,8 +98,8 @@ export default function Contact() {
                 <div>
                   <h4 className="font-semibold text-gray-900">Adres</h4>
                   <p className="text-gray-600">
-                    Innovation Street 123<br />
-                    1234 AB Amsterdam
+                    Borculoseweg 127<br />
+                    7161 GV Neede
                   </p>
                 </div>
               </div>

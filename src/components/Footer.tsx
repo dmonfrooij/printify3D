@@ -60,8 +60,10 @@ export default function Footer() {
               <li>PLA - Biodegradable</li>
               <li>ABS - Hittebestendig</li>
               <li>PETG - Transparant</li>
-              <li>TPU - Flexibel</li>
-              <li>Speciale materialen</li>
+              <li>ASA - UV-bestendig</li>
+              <li>PC - Zeer sterk</li>
+              <li>PA-CF - Carbon fiber</li>
+              <li>PLA-CF - Carbon PLA</li>
             </ul>
           </div>
 
@@ -75,11 +77,11 @@ export default function Footer() {
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="h-4 w-4" />
-                <span>+31 (0)20 123 4567</span>
+                <span>06 154 030 80</span>
               </div>
               <div className="flex items-start space-x-3">
                 <MapPin className="h-4 w-4 mt-0.5" />
-                <span>Innovation Street 123<br />1234 AB Amsterdam</span>
+                <span>Borculoseweg 127<br />7161 GV Neede</span>
               </div>
             </div>
           </div>

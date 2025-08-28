@@ -37,16 +37,16 @@ export default function Hero() {
             {/* Stats */}
             <div className="grid grid-cols-3 gap-8 pt-8 border-t border-gray-200">
               <div className="text-center">
-                <div className="text-2xl font-bold text-gray-900">500+</div>
-                <div className="text-sm text-gray-600">Projecten</div>
+                <div className="text-2xl font-bold text-gray-900">7+</div>
+                <div className="text-sm text-gray-600">Materialen</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-gray-900">24u</div>
-                <div className="text-sm text-gray-600">Gemiddelde levertijd</div>
+                <div className="text-2xl font-bold text-gray-900">48u</div>
+                <div className="text-sm text-gray-600">Snelle levering</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-gray-900">98%</div>
-                <div className="text-sm text-gray-600">Tevredenheid</div>
+                <div className="text-2xl font-bold text-gray-900">0.4mm</div>
+                <div className="text-sm text-gray-600">Precisie</div>
               </div>
             </div>
           </div>
@@ -63,13 +63,13 @@ export default function Hero() {
               {/* Precision indicator */}
               <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm rounded-lg p-3 shadow-lg">
                 <div className="text-sm font-semibold text-gray-900">Precisie</div>
-                <div className="text-xs text-gray-600">vanaf 0.2mm nauwkeurigheid</div>
+                <div className="text-xs text-gray-600">vanaf 0.4mm nauwkeurigheid</div>
               </div>
               
               {/* Material indicator */}
               <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-lg p-3 shadow-lg">
                 <div className="text-sm font-semibold text-gray-900">Materialen</div>
-                <div className="text-xs text-gray-600">PLA • ABS • PETG • TPU</div>
+                <div className="text-xs text-gray-600">PLA • ABS • PETG • ASA</div>
               </div>
             </div>
           </div>

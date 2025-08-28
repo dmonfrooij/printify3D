@@ -12,6 +12,7 @@ app.use(cors({
     'http://localhost:5173',
     'https://localhost:5173',
     'http://localhost:4173',
+    'http://localhost:465',
     'https://printify3d.nl'
   ],
 }));
