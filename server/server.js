@@ -58,6 +58,7 @@ app.post(['/send-email', '/api/send-email'], async (req, res) => {
   } catch (error) {
     console.error('Fout bij verzenden e-mail:', error);
     console.error('Stacktrace:', error.stack);
+    console.error('Request body:', req.body);
     res.status(500).json({ success: false, message: 'Fout bij verzenden e-mail.' });
   }
 });
