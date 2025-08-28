@@ -41,7 +41,7 @@ export default function Hero() {
                 <div className="text-sm text-gray-600">Materialen</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-gray-900">48u</div>
+                <div className="text-2xl font-bold text-gray-900">36u</div>
                 <div className="text-sm text-gray-600">Snelle levering</div>
               </div>
               <div className="text-center">
