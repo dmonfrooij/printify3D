@@ -28,7 +28,13 @@ export default function Hero() {
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </a>
               
-              <button className="inline-flex items-center justify-center px-8 py-4 border border-gray-300 text-gray-700 font-semibold rounded-lg hover:bg-gray-50 transition-all duration-200 group">
+              <button 
+                onClick={() => {
+                  const examplesSection = document.getElementById('examples');
+                  examplesSection?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="inline-flex items-center justify-center px-8 py-4 border border-gray-300 text-gray-700 font-semibold rounded-lg hover:bg-gray-50 transition-all duration-200 group"
+              >
                 <Play className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
                 Bekijk voorbeelden
               </button>
