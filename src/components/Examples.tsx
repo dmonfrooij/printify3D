@@ -41,20 +41,20 @@ export default function Examples() {
     },
     {
       title: 'Decoratief Object',
-      description: 'Artistiek vormgegeven decoratiestuk met complexe geometrie',
+      description: 'Vevangen lampenkap met decoratiestuk',
       material: 'PLA',
       time: '2 dagen',
       precision: '0.4mm',
-      image: 'https://images.pexels.com/photos/3844790/pexels-photo-3844790.jpeg',
+      image: 'src/images/deco.png',
       category: 'Decoratie'
     },
     {
       title: 'Vervangingsonderdeel',
-      description: 'Exact nagemaakt onderdeel ter vervanging van defect origineel',
-      material: 'ABS',
+      description: 'Op maat gemaakt onderdeel ter vervanging van missend origineel',
+      material: 'PETG-CF',
       time: '1 dag',
       precision: '0.4mm',
-      image: 'https://images.pexels.com/photos/3844792/pexels-photo-3844792.jpeg',
+      image: 'src/images/EindkapKunstofDak.png',
       category: 'Onderdeel'
     }
   ];
