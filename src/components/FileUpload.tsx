@@ -67,32 +67,10 @@ const handleSubmit = async (e: React.FormEvent) => {
       body: formDataToSend,
     });
 
-    const data = await res.json();
-    if (data.success) {
-      setIsSubmitted(true);
-      setTimeout(() => {
-        setIsSubmitted(false);
-        setFiles([]);
-        setProjectDetails({
-          name: '',
-          email: '',
-          projectType: 'prototype',
-          material: 'PLA',
-          quantity: '1',
-          description: '',
-          budget: '',
-          timeline: 'standard',
-        });
-      }, 5000);
-    } else {
-      alert('Er ging iets mis bij het verzenden. Probeer het opnieuw.');
-    }
-  } catch (err) {
-    console.error('Fetch error:', err);
-    alert('Er ging iets mis bij het verzenden. Probeer het opnieuw of neem direct contact op via info@printify3d.nl');
-  }
-};
-
+    const projectData = {
+      ...projectDetails,
+      files: fileInfo
+    };
 
     // Send to backend
     console.log('Versturen naar:', `/api/submit-project`);
