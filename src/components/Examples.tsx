@@ -47,7 +47,7 @@ export default function Examples() {
       material: 'PLA',
       time: '2 dagen',
       precision: '0.4mm',
-      image: '/images/deco.png',
+      image: deco,
       category: 'Decoratie'
     },
     {
@@ -56,7 +56,7 @@ export default function Examples() {
       material: 'PETG-CF',
       time: '1 dag',
       precision: '0.4mm',
-      image: '/images/EindkapKunstofDak.png',
+      image: eindkap,
       category: 'Onderdeel'
     }
   ];
