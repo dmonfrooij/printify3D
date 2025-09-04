@@ -45,27 +45,15 @@ export default function FileUpload() {
     setFiles(prev => prev.filter((_, i) => i !== index));
   };
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
 
-const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
-
-  const formDataToSend = new FormData();
-
-  // Voeg projectgegevens toe
-  Object.entries(projectDetails).forEach(([key, value]) => {
-    formDataToSend.append(key, value);
-  });
-
-  // Voeg bestanden toe als 'attachment'
-  files.forEach(file => {
-    formDataToSend.append('attachment', file);
-  });
-
-  try {
-    const res = await fetch(`/api/submit-project`, {
-      method: 'POST',
-      body: formDataToSend,
-    });
+    // Prepare file information for email (since we can't actually upload files via email)
+    const fileInfo = files.map(file => ({
+      name: file.name,
+      size: formatFileSize(file.size),
+      type: file.type
+    }));
 
     const projectData = {
       ...projectDetails,
