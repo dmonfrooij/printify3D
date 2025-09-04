@@ -45,20 +45,54 @@ export default function FileUpload() {
     setFiles(prev => prev.filter((_, i) => i !== index));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    // Prepare file information for email (since we can't actually upload files via email)
-    const fileInfo = files.map(file => ({
-      name: file.name,
-      size: formatFileSize(file.size),
-      type: file.type
-    }));
 
-    const projectData = {
-      ...projectDetails,
-      files: fileInfo
-    };
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  const formDataToSend = new FormData();
+
+  // Voeg projectgegevens toe
+  Object.entries(projectDetails).forEach(([key, value]) => {
+    formDataToSend.append(key, value);
+  });
+
+  // Voeg bestanden toe als 'attachment'
+  files.forEach(file => {
+    formDataToSend.append('attachment', file);
+  });
+
+  try {
+    const res = await fetch(`/api/submit-project`, {
+      method: 'POST',
+      body: formDataToSend,
+    });
+
+    const data = await res.json();
+    if (data.success) {
+      setIsSubmitted(true);
+      setTimeout(() => {
+        setIsSubmitted(false);
+        setFiles([]);
+        setProjectDetails({
+          name: '',
+          email: '',
+          projectType: 'prototype',
+          material: 'PLA',
+          quantity: '1',
+          description: '',
+          budget: '',
+          timeline: 'standard',
+        });
+      }, 5000);
+    } else {
+      alert('Er ging iets mis bij het verzenden. Probeer het opnieuw.');
+    }
+  } catch (err) {
+    console.error('Fetch error:', err);
+    alert('Er ging iets mis bij het verzenden. Probeer het opnieuw of neem direct contact op via info@printify3d.nl');
+  }
+};
+
 
     // Send to backend
     console.log('Versturen naar:', `/api/submit-project`);
