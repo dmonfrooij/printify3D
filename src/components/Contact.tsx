@@ -69,9 +69,63 @@ export default function Contact() {
 
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Contact Information */}
-          <div className="space-y-8">
-            {/* ... contact info zoals eerder ... */}
-          </div>
+        <div className="space-y-8">
+                    <div>
+                      <h3 className="text-2xl font-bold text-gray-900 mb-6">Neem Contact Op</h3>
+                      <p className="text-gray-600 mb-8">
+                        Heeft u vragen over uw 3D printing project? Of wilt u advies over materialen en ontwerp?
+                        We staan klaar om u te helpen met deskundig advies.
+                      </p>
+                    </div>
+
+                    <div className="space-y-6">
+                      <div className="flex items-center space-x-4">
+                        <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-400 rounded-lg flex items-center justify-center">
+                          <Mail className="h-6 w-6 text-white" />
+                        </div>
+                        <div>
+                          <h4 className="font-semibold text-gray-900">E-mail</h4>
+                          <span>info@printify3d.nl</span>
+                        </div>
+                      </div>
+
+                      <div className="flex items-center space-x-4">
+                        <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-400 rounded-lg flex items-center justify-center">
+                          <Phone className="h-6 w-6 text-white" />
+                        </div>
+                        <div>
+                          <h4 className="font-semibold text-gray-900">Telefoon</h4>
+                          <p className="text-gray-600">06 154 030 80</p>
+                        </div>
+                      </div>
+
+                      <div className="flex items-center space-x-4">
+                        <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-400 rounded-lg flex items-center justify-center">
+                          <MapPin className="h-6 w-6 text-white" />
+                        </div>
+                        <div>
+                          <h4 className="font-semibold text-gray-900">Adres</h4>
+                          <p className="text-gray-600">
+                            Borculoseweg 127<br />
+                            7161 GV Neede
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="flex items-center space-x-4">
+                        <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-400 rounded-lg flex items-center justify-center">
+                          <Clock className="h-6 w-6 text-white" />
+                        </div>
+                        <div>
+                          <h4 className="font-semibold text-gray-900">Openingstijden</h4>
+                          <p className="text-gray-600">
+                            Ma-Vr: 09:00 - 18:00<br />
+                            Za: 10:00 - 16:00
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
 
           {/* Contact Form */}
           <form onSubmit={handleSubmit} className="bg-white rounded-2xl shadow-xl p-8 space-y-8">
