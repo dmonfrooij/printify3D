@@ -12,7 +12,7 @@ export default function Examples() {
       time: '2 dagen',
       precision: '0.4mm',
       image: 'https://images.pexels.com/photos/3862132/pexels-photo-3862132.jpeg',
-      category: 'Prototype'
+      category: ['Prototype']
     },
     {
       title: 'Mechanisch Tandwiel',
@@ -21,7 +21,7 @@ export default function Examples() {
       time: '1 dag',
       precision: '0.4mm',
       image: 'https://images.pexels.com/photos/3844788/pexels-photo-3844788.jpeg',
-      category: 'Functioneel'
+      category: ['Functioneel']
     },
     {
       title: 'Architectuur Model',
@@ -30,7 +30,7 @@ export default function Examples() {
       time: '3 dagen',
       precision: '0.4mm',
       image: 'https://images.pexels.com/photos/3844581/pexels-photo-3844581.jpeg',
-      category: 'Model'
+      category: ['Model']
     },
     {
       title: 'Flexibele Koppeling',
@@ -39,11 +39,11 @@ export default function Examples() {
       time: '1 dag',
       precision: '0.4mm',
       image: 'https://images.pexels.com/photos/3844796/pexels-photo-3844796.jpeg',
-      category: 'Functioneel'
+      category: ['Functioneel']
     },
     {
       title: 'Decoratief Object',
-      description: 'Vevangen lampenkap met decoratiestuk',
+      description: 'Vervangen lampenkap met decoratiestuk',
       material: 'PLA',
       time: '2 dagen',
       precision: '0.4mm',
@@ -52,7 +52,7 @@ export default function Examples() {
     },
     {
       title: 'Vervangingsonderdeel',
-      description: 'Op maat gemaakt onderdeel ter vervanging van missend origineel',
+      description: 'Op maat gemaakt onderdeel ter vervanging van missend origineel. PETG Carbon Fiber enhanced. Goed voor buiten gebruik. UV en water bestendig',
       material: 'PETG-CF',
       time: '1 dag',
       precision: '0.4mm',
@@ -64,9 +64,9 @@ export default function Examples() {
   const categories = ['Alle', 'Prototype', 'Functioneel', 'Model', 'Flexibel', 'Decoratie', 'Onderdeel'];
   const [activeCategory, setActiveCategory] = React.useState('Alle');
 
-const filteredProjects = activeCategory === 'Alle'
-  ? projects
-  : projects.filter(project => project.category.includes(activeCategory));
+  const filteredProjects = activeCategory === 'Alle'
+    ? projects
+    : projects.filter(project => project.category.includes(activeCategory));
 
   return (
     <section id="examples" className="py-20 bg-gray-50">
@@ -109,8 +109,10 @@ const filteredProjects = activeCategory === 'Alle'
                   alt={project.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
-                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-1">
-                  <span className="text-xs font-medium text-gray-700">{project.category}</span>
+                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-1 flex flex-wrap">
+                  {project.category.map((cat, i) => (
+                    <span key={i} className="text-xs font-medium text-gray-700 mr-1">{cat}</span>
+                  ))}
                 </div>
               </div>
 
