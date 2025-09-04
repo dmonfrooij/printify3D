@@ -55,7 +55,7 @@ export default function Examples() {
       title: 'Vervangingsonderdeel',
       description: 'Op maat gemaakt onderdeel ter vervanging van missend origineel. PETG Carbon Fiber enhanced. Goed voor buiten gebruik. UV en water bestendig',
       material: 'PETG-CF',
-      time: '1 dag',
+      time: '2 dagen',
       precision: '0.4mm',
       image: eindkap,
       category: ['Onderdeel', 'Functioneel']
