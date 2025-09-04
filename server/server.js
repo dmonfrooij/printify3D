@@ -65,7 +65,7 @@ app.post(['/send-email', '/api/send-email'], upload.single('attachment'), async 
 });
 
 // Project submission endpoint
-app.post(['/submit-project', '/api/submit-project'], upload.array('files'), async (req, res) => {
+app.post(['/submit-project', '/api/submit-project'], upload.array('attachment'), async (req, res) => {
   const {
     name, email, projectType, material, quantity,
     description, budget, timeline
