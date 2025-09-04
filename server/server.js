@@ -2,11 +2,15 @@ require('dotenv').config();
 const express = require('express');
 const nodemailer = require('nodemailer');
 const cors = require('cors');
+const multer = require('multer');
 
 const app = express();
 const PORT = 5000;
 
-// Middleware (moet altijd vóór de routes komen)
+// Multer setup
+const upload = multer();
+
+// Middleware
 app.use(cors({
   origin: [
     'http://localhost:5173',
@@ -23,8 +27,8 @@ app.use(express.urlencoded({ extended: true }));
 function createTransporter() {
   return nodemailer.createTransport({
     host: "smtp.transip.email",
-    port: 465, // gebruik 587 bij STARTTLS
-    secure: true, // true bij poort 465, false bij 587
+    port: 465,
+    secure: true,
     auth: {
       user: process.env.TRANSIP_USER,
       pass: process.env.TRANSIP_PASS,
@@ -38,10 +42,8 @@ app.get('/', (req, res) => {
 });
 
 // Contact form endpoint
-app.post(['/send-email', '/api/send-email'], async (req, res) => {
-  console.log(`POST ${req.originalUrl} ontvangen`);
+app.post(['/send-email', '/api/send-email'], upload.single('attachment'), async (req, res) => {
   const { name, email, subject, message } = req.body;
-  console.log('Body:', req.body);
 
   try {
     const transporter = createTransporter();
@@ -52,30 +54,26 @@ app.post(['/send-email', '/api/send-email'], async (req, res) => {
       to: 'd.monfrooij@gmail.com',
       subject: `Nieuw bericht: ${subject}`,
       text: `Naam: ${name}\nE-mail: ${email}\n\nBericht:\n${message}`,
+      attachments: req.file ? [{ filename: req.file.originalname, content: req.file.buffer }] : [],
     });
 
     res.status(200).json({ success: true, message: 'E-mail verzonden!' });
   } catch (error) {
     console.error('Fout bij verzenden e-mail:', error);
-    console.error('Stacktrace:', error.stack);
-    console.error('Request body:', req.body);
     res.status(500).json({ success: false, message: 'Fout bij verzenden e-mail.' });
   }
 });
 
 // Project submission endpoint
-app.post(['/submit-project', '/api/submit-project'], async (req, res) => {
-  console.log(`POST ${req.originalUrl} ontvangen`);
+app.post(['/submit-project', '/api/submit-project'], upload.array('files'), async (req, res) => {
   const {
     name, email, projectType, material, quantity,
-    description, budget, timeline, files
+    description, budget, timeline
   } = req.body;
-  console.log('Body:', req.body);
 
   try {
     const transporter = createTransporter();
 
-    // Email naar Printify3D
     const emailContent = `
 NIEUW 3D PRINTING PROJECT
 ========================
@@ -95,13 +93,13 @@ BESCHRIJVING:
 ${description}
 
 BESTANDEN:
-${files && files.length > 0
-  ? files.map(f => `- ${f.name} (${f.size})`).join('\n')
-  : 'Geen bestanden geüpload'}
+${req.files && req.files.length > 0
+      ? req.files.map(f => `- ${f.originalname} (${f.size} bytes)`).join('\n')
+      : 'Geen bestanden geüpload'}
 
 ---
 Dit bericht is automatisch gegenereerd via de Printify3D website.
-    `;
+`;
 
     await transporter.sendMail({
       from: 'info@printify3d.nl',
@@ -109,9 +107,12 @@ Dit bericht is automatisch gegenereerd via de Printify3D website.
       to: 'd.monfrooij@gmail.com',
       subject: `Nieuw 3D Printing Project - ${name}`,
       text: emailContent,
+      attachments: req.files ? req.files.map(f => ({
+        filename: f.originalname,
+        content: f.buffer
+      })) : [],
     });
 
-    // Bevestiging naar klant
     const confirmationContent = `
 Beste ${name},
 
@@ -133,7 +134,7 @@ Het Printify3D team
 ---
 Printify3D - Van idee tot prototype
 info@printify3d.nl
-    `;
+`;
 
     await transporter.sendMail({
       from: 'info@printify3d.nl',
@@ -149,14 +150,12 @@ info@printify3d.nl
     });
   } catch (error) {
     console.error('Fout bij verzenden project:', error);
-    console.error('Stacktrace:', error.stack);
     res.status(500).json({ success: false, message: 'Fout bij verzenden project.' });
   }
 });
 
-// Catch-all voor niet-bestaande routes (Express 5 fix)
+// Catch-all voor niet-bestaande routes
 app.use((req, res) => {
-  console.log(`Route niet gevonden: ${req.method} ${req.originalUrl}`);
   res.status(404).json({
     success: false,
     message: `Route ${req.method} ${req.originalUrl} niet gevonden`
@@ -165,8 +164,4 @@ app.use((req, res) => {
 
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`✅ Server draait op http://localhost:${PORT}`);
-  console.log('Beschikbare routes:');
-  console.log('- GET  /');
-  console.log('- POST /send-email');
-  console.log('- POST /submit-project');
 });
