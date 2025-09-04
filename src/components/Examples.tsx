@@ -37,7 +37,7 @@ export default function Examples() {
       title: 'Flexibele Koppeling',
       description: 'Buigzame verbindingsstuk met rubber-achtige eigenschappen',
       material: 'ASA',
-      time: '1 dag',
+      time: '2 dagen',
       precision: '0.4mm',
       image: 'https://images.pexels.com/photos/3844796/pexels-photo-3844796.jpeg',
       category: ['Functioneel']
