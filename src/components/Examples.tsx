@@ -2,6 +2,7 @@ import React from 'react';
 import { Clock, Layers, Zap, CheckCircle } from 'lucide-react';
 import deco from '/images/deco.png';
 import eindkap from '/images/EindkapKunstofDak.png';
+import deur from '/images/deur.png';
 
 export default function Examples() {
   const projects = [
@@ -15,12 +16,12 @@ export default function Examples() {
       category: ['Prototype']
     },
     {
-      title: 'Mechanisch Tandwiel',
-      description: 'Precisie tandwiel voor bewegende mechanica met sterke eigenschappen',
+      title: 'Robot grasmaaier garagedeur',
+      description: 'Precisie garagedeur voor bewegende mechanica met sterke eigenschappen',
       material: 'PETG',
-      time: '1 dag',
+      time: '5 dagen',
       precision: '0.4mm',
-      image: 'https://images.pexels.com/photos/3844788/pexels-photo-3844788.jpeg',
+      image: deur,
       category: ['Functioneel']
     },
     {
