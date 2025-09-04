@@ -48,7 +48,7 @@ export default function Examples() {
       time: '2 dagen',
       precision: '0.4mm',
       image: deco,
-      category: 'Decoratie'
+      category: ['Decoratie', 'Functioneel']
     },
     {
       title: 'Vervangingsonderdeel',
@@ -57,16 +57,16 @@ export default function Examples() {
       time: '1 dag',
       precision: '0.4mm',
       image: eindkap,
-      category: 'Onderdeel'
+      category: ['Onderdeel', 'Functioneel']
     }
   ];
 
   const categories = ['Alle', 'Prototype', 'Functioneel', 'Model', 'Flexibel', 'Decoratie', 'Onderdeel'];
   const [activeCategory, setActiveCategory] = React.useState('Alle');
 
-  const filteredProjects = activeCategory === 'Alle' 
-    ? projects 
-    : projects.filter(project => project.category === activeCategory);
+const filteredProjects = activeCategory === 'Alle'
+  ? projects
+  : projects.filter(project => project.category.includes(activeCategory));
 
   return (
     <section id="examples" className="py-20 bg-gray-50">
