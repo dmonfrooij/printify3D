@@ -1,5 +1,7 @@
 import React from 'react';
 import { Clock, Layers, Zap, CheckCircle } from 'lucide-react';
+import deco from './assets/images/deco.png';
+import eindkap from './assets/images/EindkapKunstofDak.png';
 
 export default function Examples() {
   const projects = [
