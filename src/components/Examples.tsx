@@ -16,7 +16,7 @@ export default function Examples() {
 //       category: ['Prototype']
 //     },
     {
-      title: 'Robot grasmaaier garagedeur',
+      title: 'Functioneel ontwerp',
       description: 'Precisie garagedeur voor bewegende mechanica met sterke eigenschappen',
       material: 'PETG',
       time: '5 dagen',
