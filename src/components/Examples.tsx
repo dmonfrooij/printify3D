@@ -6,15 +6,15 @@ import deur from '/images/deur.png';
 
 export default function Examples() {
   const projects = [
-    {
-      title: 'Prototype Behuizing',
-      description: 'Functionele behuizing voor elektronisch apparaat met perfecte pasvorm',
-      material: 'ABS',
-      time: '2 dagen',
-      precision: '0.4mm',
-      image: 'https://images.pexels.com/photos/3862132/pexels-photo-3862132.jpeg',
-      category: ['Prototype']
-    },
+//     {
+//       title: 'Prototype Behuizing',
+//       description: 'Functionele behuizing voor elektronisch apparaat met perfecte pasvorm',
+//       material: 'ABS',
+//       time: '2 dagen',
+//       precision: '0.4mm',
+//       image: 'https://images.pexels.com/photos/3862132/pexels-photo-3862132.jpeg',
+//       category: ['Prototype']
+//     },
     {
       title: 'Robot grasmaaier garagedeur',
       description: 'Precisie garagedeur voor bewegende mechanica met sterke eigenschappen',
@@ -24,24 +24,24 @@ export default function Examples() {
       image: deur,
       category: ['Functioneel']
     },
-    {
-      title: 'Architectuur Model',
-      description: 'Gedetailleerd schaalmodel van gebouw met fijne details',
-      material: 'PLA',
-      time: '3 dagen',
-      precision: '0.4mm',
-      image: 'https://images.pexels.com/photos/3844581/pexels-photo-3844581.jpeg',
-      category: ['Model']
-    },
-    {
-      title: 'Flexibele Koppeling',
-      description: 'Buigzame verbindingsstuk met rubber-achtige eigenschappen',
-      material: 'ASA',
-      time: '2 dagen',
-      precision: '0.4mm',
-      image: 'https://images.pexels.com/photos/3844796/pexels-photo-3844796.jpeg',
-      category: ['Functioneel']
-    },
+//     {
+//       title: 'Architectuur Model',
+//       description: 'Gedetailleerd schaalmodel van gebouw met fijne details',
+//       material: 'PLA',
+//       time: '3 dagen',
+//       precision: '0.4mm',
+//       image: 'https://images.pexels.com/photos/3844581/pexels-photo-3844581.jpeg',
+//       category: ['Model']
+//     },
+//     {
+//       title: 'Flexibele Koppeling',
+//       description: 'Buigzame verbindingsstuk met rubber-achtige eigenschappen',
+//       material: 'ASA',
+//       time: '2 dagen',
+//       precision: '0.4mm',
+//       image: 'https://images.pexels.com/photos/3844796/pexels-photo-3844796.jpeg',
+//       category: ['Functioneel']
+//     },
     {
       title: 'Decoratief Object',
       description: 'Vervangen lampenkap met decoratiestuk',
