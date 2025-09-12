@@ -178,31 +178,7 @@ export default function FileUpload() {
             </div>
           </div>
 
-          {/* File Upload Area */}
-{/*           <div> */}
-{/*             <label className="block text-sm font-medium text-gray-700 mb-4"> */}
-{/*               Bestanden Uploaden */}
-{/*             </label> */}
-{/*              */}
-{/*             <div */}
-{/*               onDragOver={handleDragOver} */}
-{/*               onDragLeave={handleDragLeave} */}
-{/*               onDrop={handleDrop} */}
-{/*               onClick={() => fileInputRef.current?.click()} */}
-{/*               className={`border-2 border-dashed rounded-lg p-8 text-center cursor-pointer transition-colors ${ */}
-{/*                 isDragOver  */}
-{/*                   ? 'border-blue-400 bg-blue-50'  */}
-{/*                   : 'border-gray-300 hover:border-gray-400 hover:bg-gray-50' */}
-{/*               }`} */}
-{/*             > */}
-{/*               <Upload className={`h-12 w-12 mx-auto mb-4 ${isDragOver ? 'text-blue-500' : 'text-gray-400'}`} /> */}
-{/*               <p className="text-lg font-medium text-gray-900 mb-2"> */}
-{/*                 Sleep bestanden hierheen of klik om te selecteren */}
-{/*               </p> */}
-{/*               <p className="text-sm text-gray-600"> */}
-{/*                 STL, OBJ, STEP, CAD bestanden (max 50MB per bestand) */}
-{/*               </p> */}
-{/*             </div> */}
+
             
             <input
               ref={fileInputRef}
@@ -354,7 +330,7 @@ export default function FileUpload() {
             <AlertCircle className="h-5 w-5 text-blue-500 mt-0.5 flex-shrink-0" />
             <div className="text-sm text-blue-800">
               <p className="font-medium mb-1">Wat gebeurt er nu?</p>
-              <p>We controleren uw bericht en nemen contact met u op. We helpen u met het ontwerp!</p>
+              <p>We controleren uw bericht en nemen contact met u op. We helpen u graag met het ontwerp!</p>
             </div>
           </div>
         </form>
