@@ -259,7 +259,15 @@ export default function FileUpload() {
               placeholder="Beschrijf uw idee, speciale wensen, afmetingen, functionaliteit..."
             />
           </div>
-
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Bijlage (optioneel)</label>
+              <input
+                type="file"
+                name="attachment"
+                onChange={handleFileChange}
+                className="w-full"
+              />
+            </div>
           {/* Budget */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
