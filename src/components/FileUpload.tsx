@@ -178,7 +178,31 @@ export default function FileUpload() {
             </div>
           </div>
 
+          {/* File Upload Area */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-4">
+              Bestanden Uploaden
+            </label>
 
+            <div
+              onDragOver={handleDragOver}
+              onDragLeave={handleDragLeave}
+              onDrop={handleDrop}
+              onClick={() => fileInputRef.current?.click()}
+              className={`border-2 border-dashed rounded-lg p-8 text-center cursor-pointer transition-colors ${
+                isDragOver
+                  ? 'border-blue-400 bg-blue-50'
+                  : 'border-gray-300 hover:border-gray-400 hover:bg-gray-50'
+              }`}
+            >
+              <Upload className={`h-12 w-12 mx-auto mb-4 ${isDragOver ? 'text-blue-500' : 'text-gray-400'}`} />
+              <p className="text-lg font-medium text-gray-900 mb-2">
+                Sleep bestanden hierheen of klik om te selecteren
+              </p>
+              <p className="text-sm text-gray-600">
+                STL, OBJ, STEP, CAD bestanden (max 50MB per bestand)
+              </p>
+            </div>
             
             <input
               ref={fileInputRef}
