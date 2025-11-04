@@ -170,13 +170,7 @@ export default function Examples() {
             <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
               Heeft u een idee of bestand dat u wilt laten printen? Upload uw bestanden of neem contact op voor advies.
             </p>
-              <a
-                href="#contact"
-                className="inline-flex items-center justify-center px-8 py-3 border border-gray-300 text-gray-700 font-semibold rounded-lg hover:bg-gray-50 transition-all duration-200"
-              >
-                Contact Opnemen
-              </a>
-            </div>
+
           </div>
         </div>
       </div>
