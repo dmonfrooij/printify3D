@@ -16,7 +16,7 @@ function App() {
       <Hero />
       <Services />
       <Examples />
-      <FileUpload />
+
       <Contact />
       <Footer />
     </div>
